@@ -1,8 +1,16 @@
 import logo from "./logo.svg";
 import "./App.css";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import MapPage from "./components/map";
 
 function App() {
-  return <div id="map" style={{width: "500px", height: "400px"}}></div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/map" element={<MapPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
