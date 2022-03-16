@@ -1,18 +1,20 @@
 /* global kakao */
 import React, {useEffect} from "react";
 
-const {kakao} = window;
-
-window.kakao = window.kakao || "SomeValue";
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 
 const MapPage = () => {
   useEffect(() => {
     const container = document.getElementById("map");
     const options = {
-      center: new kakao.maps.Latlng(35.85133, 127.734086),
+      center: new window.kakao.maps.Latlng(35.85133, 127.734086),
       level: 13,
     };
-    const map = new kakao.map.Map(container, options);
+    const map = new window.kakao.maps.Map(container, options);
   }, []);
 
   return (
