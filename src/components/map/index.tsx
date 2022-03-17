@@ -1,11 +1,14 @@
 /* global kakao */
-import React, {useEffect} from "react";
+import React from "react";
 import * as S from "./style";
 import Map from "./item/map";
 
 const MapPage = () => {
-  <S.MapWrapper>
-    <Map></Map>
-  </S.MapWrapper>;
+  return (
+    <S.MapWrapper>
+      <h1>igigigii</h1>
+      {/* <Map></Map> */}
+    </S.MapWrapper>
+  );
 };
 export default MapPage;

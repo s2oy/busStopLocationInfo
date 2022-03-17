@@ -1,7 +1,6 @@
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {MapPage} from "./components";
+import MapPage from "./components/map";
 
 function App() {
   return (
