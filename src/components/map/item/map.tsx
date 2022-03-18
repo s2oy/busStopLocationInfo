@@ -8,6 +8,7 @@ declare global {
 }
 
 const Map = () => {
+  //map 불러옴
   useEffect(() => {
     let container = document.getElementById("map");
     let options = {
@@ -15,12 +16,26 @@ const Map = () => {
       level: 3,
     };
     let map = new window.kakao.maps.Map(container, options);
+
+    //marker
     let markerPosition = new window.kakao.maps.LatLng(33.450701, 126.570667);
     let marker = new window.kakao.maps.Marker({
       position: markerPosition,
+      clickable: true, //marker 클릭했을 때 지도 클릭이벤트 방지
     });
     marker.setMap(map);
-    // console.log("loading kakaomap");
+
+    let iwContent = "카카오 본사";
+    let iwRemoveable = true;
+
+    let infowindow = new window.kakao.maps.InfoWindow({
+      content: iwContent,
+      removable: iwRemoveable,
+    });
+
+    window.kakao.maps.event.addListener(marker, "click", function () {
+      infowindow.open(map, marker);
+    });
   }, []);
 
   return (
