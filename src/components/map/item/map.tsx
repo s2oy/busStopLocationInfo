@@ -44,12 +44,26 @@ const Map = () => {
     });
   }, []);
 
+  const url =
+    "https://api.odcloud.kr/api/15081069/v1/uddi:f0ac92c3-e9f0-4d34-9fae-8751ba6e53f9?page=1&perPage=10&serviceKey=9Tnec%2BHetTZ23faMm5uSo19iuo4ZbUQVfUxMVHMkp4v%2BQmj%2FHtHuqXsDAkekMfe8bBHxd7T99xPZTStJQX5ppQ%3D%3D";
+
+  fetch(url)
+    .then(res => res.json())
+    .then(myJson => {
+      document.getElementById("data")!.innerText = JSON.stringify(
+        myJson,
+        null,
+        1
+      );
+    });
+
   return (
     <S.MapContainer>
       <div
         id="map"
         style={{width: "100vh", height: "100vh", margin: "0 auto"}}
       ></div>
+      <p id="data"></p>
     </S.MapContainer>
   );
 };
