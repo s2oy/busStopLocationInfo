@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import {busData} from "../../../db/busData";
 import * as S from "./style";
 
 declare global {
@@ -20,13 +21,24 @@ const Map = () => {
 
     let map = new window.kakao.maps.Map(mapContainer, mapOption);
 
+    busData.forEach(el => {
+      new window.kakao.maps.Marker({
+        //맵 가져옴
+        map: map,
+        //위치 뿌려줌
+        position: new window.kakao.maps.LatLng(el.lat, el.lng),
+        //이름뿌려줌
+        title: el.title,
+      });
+    });
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position: any) {
         let lat = position.coords.latitude; //위도
         let lon = position.coords.longitude; //경도
 
         let locPosition = new window.kakao.maps.LatLng(lat, lon),
-          message = '<div style="padding:5px">여기에 계신가요?</div>';
+          message = '<div style="padding:5px">내 위치</div>';
 
         displayMarker(locPosition, message);
       });
@@ -66,7 +78,7 @@ const Map = () => {
     <S.MapContainer>
       <div
         id="map"
-        style={{width: "100vh", height: "100vh", margin: "0 auto"}}
+        style={{width: "200vh", height: "100vh", margin: "0 auto"}}
       ></div>
       <p id="data"></p>
     </S.MapContainer>
