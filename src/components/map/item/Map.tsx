@@ -7,6 +7,7 @@ declare global {
     kakao: any;
   }
 }
+
 const Map = () => {
   //map 불러옴
   useEffect(() => {
